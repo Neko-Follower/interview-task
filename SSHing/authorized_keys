@@ -1,0 +1,4 @@
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIGhc4wv65ZD0bUfZUyOx/GG/PalBvgtlPJIggYoxb+s Gitea Host Key
+
+# gitea public key
+command="/usr/local/bin/gitea --config=/data/gitea/conf/app.ini serv key-3",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty,no-user-rc,restrict ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDOqR4u94jIimOV8F1c5NyiGqyj4lpWsKplkbCauN+sJ Gitea SSH Key
