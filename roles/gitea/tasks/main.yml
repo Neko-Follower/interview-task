@@ -25,4 +25,4 @@
       USER_UID: "1001"
       USER_GID: "1002"
     networks:
-      - name: jenkins_gitea_network
+      - name: interview_network

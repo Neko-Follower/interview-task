@@ -10,6 +10,6 @@
     name: docker
     state: started
 
-- name: Create Docker network for Jenkins and Gitea
+- name: Create Docker network
   docker_network:
-    name: jenkins_gitea_network
+    name: interview_network
