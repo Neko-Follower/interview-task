@@ -1,0 +1,26 @@
+---
+- name: Pull Jenkins Docker image
+  docker_image:
+    name: jenkins/jenkins:lts
+    source: pull
+
+- name: Create Jenkins data directory
+  file:
+    path: /srv/jenkins
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: '0755'
+
+- name: Run Jenkins container
+  docker_container:
+    name: jenkins
+    image: jenkins/jenkins:lts
+    restart_policy: always
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - "/srv/jenkins:/var/jenkins_home"
+    networks:
+      - name: jenkins_gitea_network

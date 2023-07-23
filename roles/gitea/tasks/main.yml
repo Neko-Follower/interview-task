@@ -1,0 +1,28 @@
+---
+- name: Pull Gitea Docker Image
+  ansible.builtin.docker_image:
+    name: gitea/gitea
+    source: pull
+
+- name: Create directory for Gitea data
+  ansible.builtin.file:
+    path: /srv/gitea
+    state: directory
+    mode: '0775'
+
+- name: Run Gitea container
+  ansible.builtin.docker_container:
+    name: gitea
+    image: gitea/gitea:latest
+    ports:
+      - "3000:3000"
+      - "2222:22"
+    volumes:
+      - "/srv/gitea:/data"
+      - "/home/git/.ssh/:/data/git/.ssh"
+    restart_policy: always
+    env:
+      USER_UID: "1001"
+      USER_GID: "1002"
+    networks:
+      - name: jenkins_gitea_network

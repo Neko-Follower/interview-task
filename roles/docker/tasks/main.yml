@@ -1,0 +1,15 @@
+---
+- name: Install Docker
+  ansible.builtin.package:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Start Docker
+  ansible.builtin.service:
+    name: docker
+    state: started
+
+- name: Create Docker network for Jenkins and Gitea
+  docker_network:
+    name: jenkins_gitea_network
